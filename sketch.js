@@ -6,13 +6,22 @@ function setup() {
 function draw() {
   clear();
 
-  let position = createVector(windowWidth / 2, windowHeight / 2);
-  drawKnob(position, 50, PI/4);
+  const knob = new Knob(width/2, height/2, 50, PI/4);
+  knob.draw();
+
 }
 
-function drawKnob(position, radius, rotation) {
-  translate(position.x, position.y);
-  rotate(rotation);
-  circle(0, 0, radius * 2);
-  line(0, 0, 0, radius)
+class Knob {
+  constructor(x, y, radius, rotation) {
+    this.position = createVector(x, y);
+    this.radius = radius;
+    this.rotation = rotation;
+  }
+
+  draw() {
+    translate(this.position.x, this.position.y);
+    rotate(this.rotation);
+    circle(0, 0, this.radius * 2);
+    line(0, 0, 0, this.radius);
+  }
 }
