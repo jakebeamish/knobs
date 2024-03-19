@@ -1,7 +1,7 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // console.log("Canvas size:", windowWidth, windowHeight);
-  noFill();
+  // noFill();
   // noSmooth();
   // noLoop();
 }
@@ -37,10 +37,16 @@ class Knob {
     translate(this.position.x, this.position.y);
 
     rotate(this.rotation);
+    noFill();
     circle(0, 0, this.radius * 2);
     arc(0, 0, this.radius * 2.2, this.radius * 2.2, PI/2 + this.angleOffset, PI/2 - this.angleOffset)
     
-
+    rectMode(CENTER)
+    // rect(0, this.radius * 1.2, 20, 20);
+    fill(0)
+    textSize(20)
+    textAlign(CENTER)
+    text(this.value.toFixed(2), 0, this.radius * 1.2)
 
     rotate(this.angleOffset + PI);
 
