@@ -2,17 +2,21 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // console.log("Canvas size:", windowWidth, windowHeight);
   noFill();
+  // noSmooth();
   // noLoop();
 }
 
 function draw() {
   clear();
 
-  const knob = new Knob(width/2, height/2, 50, 0, PI*1.6, 0);
+  background(255);
+  strokeWeight(2);
 
-  knob.value = 1 - (cos(frameCount * 0.01) + 1) / 2;
+  const knob = new Knob(width/2, height/2, 200, 0, PI*1.6, 0);
 
-  knob.radius = 50 + (knob.value * 10)
+  knob.value = 1 - ((cos(frameCount * 0.02) + 1) / 2);
+
+  // knob.radius = 50 + (knob.value * 20);
 
   knob.draw();
 
@@ -29,11 +33,28 @@ class Knob {
   }
 
   draw() {
+    push();
     translate(this.position.x, this.position.y);
+
     rotate(this.rotation);
     circle(0, 0, this.radius * 2);
     arc(0, 0, this.radius * 2.2, this.radius * 2.2, PI/2 + this.angleOffset, PI/2 - this.angleOffset)
-    rotate(this.angleOffset + PI + (this.value * this.range))
-    line(0, 0, 0, -this.radius);
+    
+
+
+    rotate(this.angleOffset + PI);
+
+    for (let i = 0; i <= 10; i++) {
+      push();
+      rotate((i/10) * this.range)
+      line(0,-this.radius * 1.1, 0, -this.radius * 1.2)
+      pop();
+    }
+
+
+    
+    rotate(this.value * this.range)
+    line(0, -this.radius/2, 0, -this.radius);
+    pop();
   }
 }
