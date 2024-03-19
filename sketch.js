@@ -7,6 +7,12 @@ function draw() {
   clear();
 
   let position = createVector(windowWidth / 2, windowHeight / 2);
-  circle(position.x, position.y, 100);
-  line(position.x, position.y, position.x, position.y - 50)
+  drawKnob(position, 50, PI/4);
+}
+
+function drawKnob(position, radius, rotation) {
+  translate(position.x, position.y);
+  rotate(rotation);
+  circle(0, 0, radius * 2);
+  line(0, 0, 0, radius)
 }
