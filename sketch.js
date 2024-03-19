@@ -51,8 +51,6 @@ class Knob {
       pop();
     }
 
-
-    
     rotate(this.value * this.range)
     line(0, -this.radius/2, 0, -this.radius);
     pop();
