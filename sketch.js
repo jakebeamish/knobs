@@ -2,13 +2,18 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // console.log("Canvas size:", windowWidth, windowHeight);
   noFill();
-  noLoop();
+  // noLoop();
 }
 
 function draw() {
   clear();
 
   const knob = new Knob(width/2, height/2, 50, 0, PI*1.6, 0);
+
+  knob.value = 1 - (cos(frameCount * 0.01) + 1) / 2;
+
+  knob.radius = 50 + (knob.value * 10)
+
   knob.draw();
 
 }
